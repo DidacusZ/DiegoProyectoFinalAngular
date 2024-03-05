@@ -1,0 +1,21 @@
+<h1><b>Registro</b></h1>
+<!-- formulario con ng model -->
+<form>
+    <div class="mb-3">
+        <label class="form-label">Nombre:</label>
+        <input type="text" class="form-control" name="nombre" [(ngModel)]="datos.nombre">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Movil:</label>
+        <input type="text" class="form-control" name="movil" [(ngModel)]="datos.movil">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email:</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="datos.email">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Password:</label>
+        <input type="password" class="form-control" name="clave" [(ngModel)]="datos.clave">
+    </div>
+    <input class="btn btn-success" type="submit" value="Enviar" (click)="registrar()">
+</form>

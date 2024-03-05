@@ -1,0 +1,16 @@
+
+<div>
+    <label for="formFileLg" class="form-label">Selecciona un archivo para subir:</label>
+    <input (change)="subirArchivo($event)" class="form-control form-control-lg" id="formFileLg" type="file">
+</div>
+
+<h1>Tus imagenes</h1>
+  <div class="container mb-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div *ngFor="let image of images" class="col">
+        <div class="card h-100">
+          <img [src]="image" class="card-img-top" alt="...">
+        </div>
+      </div>
+    </div>
+  </div>

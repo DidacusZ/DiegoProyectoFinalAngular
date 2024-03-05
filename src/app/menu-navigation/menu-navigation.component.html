@@ -1,0 +1,37 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item *ngIf="!estaIniciado" href="/auth/inicioSesion">Inicio de sesión</a>
+      <a mat-list-item *ngIf="!estaIniciado" href="/auth/registro">Registro</a>
+      <a mat-list-item (click)="cerrarSesion()">Cerrar Sesion</a>
+
+      <a mat-list-item *ngIf="estaIniciado" href="/administracion">Administración</a><!-- hay problemas con la selección administrador -->
+      <a mat-list-item *ngIf="estaIniciado"href="/bienvenida">Bienvenida</a>
+      <a mat-list-item *ngIf="estaIniciado" href="/galeria">Galería</a>
+      <a mat-list-item  href="/home">Home</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">Menú</mat-icon>
+      </button>
+      <span>Galería de fotos</span>
+    </mat-toolbar>
+    <!-- 
+    <button (click)="estaLog()">estaLog</button>
+    <button (click)="esAD()">esAdmin</button>
+     -->
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

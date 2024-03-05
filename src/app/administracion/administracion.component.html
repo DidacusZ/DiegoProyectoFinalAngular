@@ -1,0 +1,35 @@
+<h1><b>Administración de Usuarios</b></h1>
+<div *ngIf="(usuarios$ | async) as usuarios">
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo Electrónico</th>
+                <th>Movil</th>
+                <th>Rol</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios">
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.movil }}</td>
+                <td>{{ usuario.rol }}</td>
+                <!-- Botón de Editar -->
+                <td>
+                    <div class="d-grid">
+                        <button (click)="editarUsuario(usuario.id)" class="btn btn-primary">Editar</button>
+                    </div>                    
+                </td>                
+                <td>
+                    <div class="d-grid">
+                        <button (click)="eliminarUsuario(usuario.id)" class="btn btn-danger">Eliminar</button>
+                    </div>                    
+                </td>    
+                
+            </tr>
+        </tbody>
+
+    

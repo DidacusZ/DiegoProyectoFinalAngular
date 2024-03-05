@@ -1,0 +1,17 @@
+<h1><b>Inicio de sesión</b></h1>
+<!-- formulario reactivo -->
+<form [formGroup]="formLogin" (ngSubmit)="inicioSesionForm()">
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="text" class="form-control" formControlName="email">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" formControlName="password">
+    </div>
+    <input class="btn btn-success" type="submit" value="Enviar">
+</form>
+
+<!-- 
+<button class="btn btn-info" (click)="onClick()">Login con Google</button>
+ -->

@@ -1,0 +1,20 @@
+<h1><b>Edición de usuario</b></h1>
+<form [formGroup]="editarUsuarioForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label class="form-label">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" formControlName="nombre">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Movil:</label>
+        <input type="text" class="form-control" id="movil" formControlName="movil">
+    </div>
+
+    <label class="form-label">Rol:</label>
+    <select id="rol" name="rol" class="form-select" formControlName="rol" required>
+        
+        <option value="Usuario">Usuario</option>
+        <option value="Administrador">Administrador</option>
+    </select>
+    <br>
+    <button class="btn btn-success" type="submit">Actualizar Usuario</button>
+  </form>
