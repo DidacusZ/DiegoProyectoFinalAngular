@@ -16,7 +16,10 @@ export class MenuNavigationComponent implements OnInit {
 
   private breakpointObserver = inject(BreakpointObserver);
 
-  rol:'Usuario' | 'Administrador' | undefined;
+  rol?:string;
+  datos: any[] = [];
+
+  usuario$: Observable<any[]> | undefined;
 
   esAdmin: boolean = true;
   estaIniciado: boolean = false;
@@ -28,17 +31,21 @@ export class MenuNavigationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.esAdmin = this.autenticacionS.esAdmin;
+    
+    //this.esAdmin = this.autenticacionS.rolUsuario;
+    console.log('roluser',this.autenticacionS.esAdmin)
+    this.firebaseS.usuarioPorId(String(localStorage.getItem('idUsuario'))).subscribe(data => {
+      //console.log('Datos obtenidos:', data);
+      this.datos = data; // Asigna los datos a la variable datos para usarlos en tu componente
+      this.rol=data[0].rol;
+      this.esAdmin = this.rol === 'Administrador'; // Verifica si el rol es "Administrador"
+      console.log('Es admin:', this.esAdmin);
+
+      console.log('RolLll:', data[0].rol);
+    });
+
     this.estaIniciado = this.autenticacionS.estaLogeado;
 
-    console.log(this.autenticacionS.esAdmin);
-    console.log(this.autenticacionS.estaLogeado);
-
-
-    const userId = 'l8VG01sogXNsqPdAniYMoyQHd733'; // Aquí debes proporcionar el ID del usuario
-    this.firebaseS.obtenerRolPorId(userId).subscribe((rol: string) => {
-      console.log('Rol del usuario:', rol);
-    });
   }
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -58,13 +65,23 @@ export class MenuNavigationComponent implements OnInit {
     estaLog() 
     {
       console.log(this.autenticacionS.estaLogeado);
-      console.log(JSON.parse(localStorage.getItem('usuario')!))
     }
 
   esAD() 
   {
-    console.log(this.autenticacionS.esAdmin);
+    console.log('autenticación:',this.autenticacionS.esAdmin);
     console.log('ROL:',localStorage.getItem('rolUsuario'))
     console.log('ID:',localStorage.getItem('idUsuario'))
+/*
+    this.firebaseS.usuarioPorId(String(localStorage.getItem('idUsuario'))).subscribe(data => {
+      //console.log('Datos obtenidos:', data);
+      this.datos = data; // Asigna los datos a la variable datos para usarlos en tu componente
+      this.rol=data[0].rol;
+      this.esAdmin = this.rol === 'Administrador'; // Verifica si el rol es "Administrador"
+      console.log('Es admin:', this.esAdmin);
+
+      console.log('RolL:', data[0].rol);
+    });
+*/
   }  
 }

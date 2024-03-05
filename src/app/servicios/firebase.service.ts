@@ -15,13 +15,13 @@ export class FirebaseService {
     const collectionRef = collection(this.firestore, coleccion);
     return addDoc(collectionRef, datos) as Promise<any>;
   }
-
+/*
   crearDocumentoPorId(datos: any, coleccion: string,id:string){
     const collectionRef = collection(this.firestore, coleccion);
     //return addDoc(collectionRef, datos) as Promise<any>;
     //return collectionRef.doc(id).set(datos);
   }
-
+*/
   getDocumentById(id: string){
     const documentRef = doc(this.firestore, 'Usuarios' + "/" + id);
     return docData(documentRef, {idField: "id"}) as Observable<any>;
@@ -43,19 +43,11 @@ export class FirebaseService {
     const userDoc = doc(this.firestore, 'Usuarios', userId);
      return updateDoc(userDoc, newData);
   }
-  
-  obtenerRolPorId(id: string): Observable<string> {
-    return this.getDocumentById(id).pipe(
-      map((userData: any) => {
-        if (userData && userData.rol) {
-          return userData.rol; // Devuelve el rol del usuario si se encuentra en los datos
-        } else {
-          return 'Usuariooooo'; // Devuelve 'Usuario' si no se encuentra el rol en los datos
-        }
-      }),
-      first() // Emite solo el primer valor y luego se completa el Observable
-    );
-  }
 
+  usuarioPorId(valor: string){
+    const collectionRef = collection(this.firestore, 'Usuarios');
+    const queryRef = query(collectionRef, where('id', "==", valor));
+    return collectionData(queryRef, {idField: "id"}) as Observable<any[]>;
+  }
   
 }

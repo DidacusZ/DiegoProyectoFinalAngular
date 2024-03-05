@@ -8,9 +8,9 @@ import { Storage, ref, uploadBytes, listAll, getDownloadURL } from '@angular/fir
 })
 export class GaleriaComponent implements OnInit {
 
-
   images: string[] = [];
-  constructor(private storage: Storage) { }
+
+  constructor(private storage: Storage) {}
 
   ngOnInit(): void {
     this.getImages();
@@ -28,7 +28,6 @@ export class GaleriaComponent implements OnInit {
 
    getImages() {
     const usuarioId = localStorage.getItem('idUsuario');
-
     const imagesRef = ref(this.storage, `${usuarioId}`);
 
     listAll(imagesRef).then(async images => {
@@ -39,5 +38,7 @@ export class GaleriaComponent implements OnInit {
       }
 
     }).catch(error => console.log(error));
-  }
+  };
+
+
 }

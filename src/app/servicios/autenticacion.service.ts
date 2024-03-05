@@ -11,6 +11,9 @@ export class AutenticacionService {
   listaUsuarios?: Usuario[];
   datos:any;
 
+  rol: string = '';
+  esAdministrador:boolean = false;
+
   constructor(
     private autenticacion: Auth,
     private firebaseS: FirebaseService
@@ -56,19 +59,22 @@ export class AutenticacionService {
     if(user){
       localStorage.setItem('idUsuario', user.uid);
       return true;  
-    }
-  
+    }  
     else
       return false;  
   }
 
   get esAdmin(): boolean {
-    const id = String(localStorage.getItem('idUsuario'));
-    const rol = String(this.firebaseS.obtenerRolPorId(id));
-    console.log("rolll:",this.firebaseS.obtenerRolPorId(id))
-    if(rol=="Administrador")
-    return true;
-    else
+    this.firebaseS.usuarioPorId(String(localStorage.getItem('idUsuario'))).subscribe(data => {
+      //console.log('Datos obtenidos:', data);
+      this.datos = data; // Asigna los datos a la variable datos para usarlos en tu componente
+      this.rol = data[0].rol;
+      console.log('ROL:', this.rol);
+
+      this.esAdministrador = data[0].rol === 'Administrador';
+      return this.esAdministrador;
+
+    });
     return false;
   }
 
