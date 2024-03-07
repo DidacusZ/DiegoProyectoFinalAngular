@@ -29,11 +29,12 @@ export class InicioSesionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    /*
         // Verifica si el usuario ya ha iniciado sesión
         if (this.autenticacionS.estaLogeado) {
           // Si el usuario ya ha iniciado sesión, redirige al usuario a la ruta '/galeria'
-          this.router.navigate(['/galeria']);
-        }
+          this.router.navigate(['/bienvenida']);
+        }*/
   }
 
   inicioSesionForm() {

@@ -9,7 +9,7 @@
       <a mat-list-item *ngIf="!estaIniciado" href="/auth/registro">Registro</a>
       <a mat-list-item *ngIf="estaIniciado" (click)="cerrarSesion()">Cerrar Sesion</a>
 
-      <a mat-list-item *ngIf="estaIniciado" href="/administracion">Administración</a><!-- hay problemas con la selección administrador -->
+      <a mat-list-item *ngIf="esAdmin" href="/administracion">Administración</a><!-- hay problemas con la selección administrador -->
       <a mat-list-item *ngIf="estaIniciado"href="/bienvenida">Bienvenida</a>
       <a mat-list-item *ngIf="estaIniciado" href="/galeria">Galería</a>
       <a mat-list-item *ngIf="!estaIniciado" href="/home">Home</a>
