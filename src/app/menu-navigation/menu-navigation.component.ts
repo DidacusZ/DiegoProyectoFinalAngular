@@ -75,7 +75,7 @@ export class MenuNavigationComponent implements OnInit {
        this.estaIniciado = this.autenticacionS.estaLogeado;
      }
    }
-
+/*
   estaLog() {console.log(this.autenticacionS.estaLogeado);}
 
   esAD() 
@@ -85,4 +85,5 @@ export class MenuNavigationComponent implements OnInit {
     console.log('ID:',localStorage.getItem('idUsuario'));
     console.log("bool admin:",this.esAdmin)
   }  
+  */
 }
