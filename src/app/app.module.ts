@@ -24,7 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AdministracionComponent } from './administracion/administracion.component';
-import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
+import { EditarUsuarioComponent } from './administracion/editar-usuario/editar-usuario.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 
 @NgModule({

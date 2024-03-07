@@ -41,9 +41,9 @@ export class MenuNavigationComponent implements OnInit {
 
     //no funciona meterlo en el servicio, no da los mismos resultados
     this.firebaseS.usuarioPorId(String(localStorage.getItem('idUsuario'))).subscribe(data => {
-    this.datos = data; // Asigna los datos a la variable datos para usarlos en tu componente
-    this.rol=data[0].rol;
-    this.esAdmin = this.rol === 'Administrador'; // Verifica si el rol es "Administrador"
+    //this.datos = data; // Asigna los datos a la variable datos para usarlos en tu componente
+    //this.rol=data[0].rol;
+    this.esAdmin = data[0].rol === 'Administrador'; // Verifica si el rol es "Administrador"
     console.log('Es admin:', this.esAdmin);
     //localStorage.setItem('rolUsuario', Strthis.esAdmin);
 

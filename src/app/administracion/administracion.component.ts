@@ -39,6 +39,8 @@ export class AdministracionComponent implements OnInit {
     }
   }
 
-  
+  crearUsuario(){
+    this.router.navigate(['/administracion/crearUsuario']);
+  }
     
 }

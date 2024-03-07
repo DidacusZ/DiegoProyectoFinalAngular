@@ -1,4 +1,5 @@
-<h1><b>Registro</b></h1>
+<h1 *ngIf="!estaIniciado"><b>Registro</b></h1>
+<h1 *ngIf="esAdmin && estaIniciado"><b>Crear Usuario</b></h1>
 <!-- formulario con ng model -->
 <form>
     <div class="mb-3">
@@ -14,8 +15,19 @@
         <input type="email" class="form-control" name="email" [(ngModel)]="datos.email">
     </div>
     <div class="mb-3">
-        <label class="form-label">Password:</label>
-        <input type="password" class="form-control" name="clave" [(ngModel)]="datos.clave">
+        <label class="form-label">Contraseña:</label>
+        <input type="password" class="form-control" id="clave" name="clave" [(ngModel)]="datos.clave" oninput="revisarContraseña()">
     </div>
-    <input class="btn btn-success" type="submit" value="Enviar" (click)="registrar()">
+
+    
+    <!-- 
+    <div class="mb-3">
+        <label class="form-label">Contraseña:</label>
+        <input type="password" class="form-control" id="clave2" placeholder="Repetir Contraseña" oninput="revisarContraseña()">
+    </div>
+     -->
+
+    <div id="mensajeClave"></div>  
+    <input *ngIf="!estaIniciado" class="btn btn-success" type="submit" value="Enviar" (click)="registrar()" id="boton">
+    <input *ngIf="esAdmin && estaIniciado" class="btn btn-success" type="submit" value="Crear Usuario" (click)="registrar()" id="boton">
 </form>

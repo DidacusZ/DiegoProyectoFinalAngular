@@ -7,7 +7,7 @@ import { InicioSesionComponent } from './auth/inicio-sesion/inicio-sesion.compon
 import { BienvenidaComponent } from './bienvenida/bienvenida.component';
 import { HomeComponent } from './home/home.component';
 import { AdministracionComponent } from './administracion/administracion.component';
-import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
+import { EditarUsuarioComponent } from './administracion/editar-usuario/editar-usuario.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { iniciadoGuard } from './guards/iniciado.guard';
 
@@ -47,6 +47,10 @@ const routes: Routes = [
       {
         path: 'editarUsuario/:id',
         component: EditarUsuarioComponent,
+      },
+      {
+        path: 'crearUsuario',
+        component: RegistroComponent,
       },
     ]
   },
