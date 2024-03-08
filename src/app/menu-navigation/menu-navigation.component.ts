@@ -35,19 +35,13 @@ export class MenuNavigationComponent implements OnInit {
 
     this.estaIniciado = this.autenticacionS.estaLogeado;
 
-    //this.esAdmin = this.autenticacionS.rolUsuario;
-    //console.log('roluser',this.autenticacionS.esAdmin)
-    //console.log('rol del usuario::',this.autenticacionS.esAdmin2(String(localStorage.getItem('idUsuario'))));
-
     //no funciona meterlo en el servicio, no da los mismos resultados
     this.firebaseS.usuarioPorId(String(localStorage.getItem('idUsuario'))).subscribe(data => {
-    //this.datos = data; // Asigna los datos a la variable datos para usarlos en tu componente
-    //this.rol=data[0].rol;
+
     this.esAdmin = data[0].rol === 'Administrador'; // Verifica si el rol es "Administrador"
     console.log('Es admin:', this.esAdmin);
-    //localStorage.setItem('rolUsuario', Strthis.esAdmin);
-    
-    
+
+    //controlamos si es admin o no para enviar a una ruta o a otra
     var v = true;
     if (this.estaIniciado && this.esAdmin==false && v==true) {
       console.log('galeria', this.esAdmin);

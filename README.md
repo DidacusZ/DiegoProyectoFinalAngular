@@ -6,6 +6,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 https://angularproyecto-eab9b.web.app/
 
+npm run build
+firebase deploy
 
 ## Usuarios
 
