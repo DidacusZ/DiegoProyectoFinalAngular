@@ -25,9 +25,7 @@ export class EditarUsuarioComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private firebaseS: FirebaseService
-  ) {
-    
-   }
+  ) {}
 
   ngOnInit(): void {
     // Obtener el ID del usuario de los parámetros de la URL
@@ -70,6 +68,5 @@ export class EditarUsuarioComponent implements OnInit {
       }
     }
   }
-
 
 }

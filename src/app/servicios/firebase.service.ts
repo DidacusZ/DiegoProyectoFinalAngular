@@ -15,13 +15,7 @@ export class FirebaseService {
     const collectionRef = collection(this.firestore, coleccion);
     return addDoc(collectionRef, datos) as Promise<any>;
   }
-/*
-  crearDocumentoPorId(datos: any, coleccion: string,id:string){
-    const collectionRef = collection(this.firestore, coleccion);
-    //return addDoc(collectionRef, datos) as Promise<any>;
-    //return collectionRef.doc(id).set(datos);
-  }
-*/
+  
   getDocumentById(id: string){
     const documentRef = doc(this.firestore, 'Usuarios' + "/" + id);
     return docData(documentRef, {idField: "id"}) as Observable<any>;

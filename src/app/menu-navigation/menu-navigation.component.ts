@@ -46,15 +46,19 @@ export class MenuNavigationComponent implements OnInit {
     this.esAdmin = data[0].rol === 'Administrador'; // Verifica si el rol es "Administrador"
     console.log('Es admin:', this.esAdmin);
     //localStorage.setItem('rolUsuario', Strthis.esAdmin);
-
-    if (this.estaIniciado && this.esAdmin==false) {
+    
+    
+    var v = true;
+    if (this.estaIniciado && this.esAdmin==false && v==true) {
       console.log('galeria', this.esAdmin);
       // Si el usuario ya ha iniciado sesión, redirige al usuario a la ruta '/galeria'
       this.router.navigate(['/galeria']);
+      v=false;
     }
-    else if (this.estaIniciado && this.esAdmin==true) {
+    else if (this.estaIniciado && this.esAdmin==true && v==true) {
       console.log('add', this.esAdmin);
       this.router.navigate(['/administracion']);
+      v=false;
     }
 
     });

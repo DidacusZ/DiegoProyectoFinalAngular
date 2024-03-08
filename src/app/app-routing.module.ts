@@ -4,40 +4,30 @@ import { RouterModule, Routes } from '@angular/router';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { InicioSesionComponent } from './auth/inicio-sesion/inicio-sesion.component';
-import { BienvenidaComponent } from './bienvenida/bienvenida.component';
-import { HomeComponent } from './home/home.component';
 import { AdministracionComponent } from './administracion/administracion.component';
 import { EditarUsuarioComponent } from './administracion/editar-usuario/editar-usuario.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { iniciadoGuard } from './guards/iniciado.guard';
+import { Error404Component } from './error404/error404.component';
+import { administradorGuard } from './guards/administrador.guard';
 
 const routes: Routes = [
   // Ruta por defecto que redirige al componente 'BienvenidaComponent' cuando la URL es vacía
-  { path: '', pathMatch: 'full', redirectTo: '/home' },
-  
-  // Ruta para la página de bienvenida, muestra el componente 'BienvenidaComponent'
-  // También se aplica un guardia de ruta para redirigir a '/auth/registro' si el usuario no está autorizado
-  {
-    path: 'bienvenida',
-    component: BienvenidaComponent,
-    //...canActivate(() => redirectUnauthorizedTo(['/auth/inicioSesion']))
+  { path: '', pathMatch: 'full', redirectTo: '/auth/inicioSesion' },
+
+  { 
+    path: 'auth/registro',
+    component: RegistroComponent,
   },
-
-  
-      // Ruta para el componente de registro
-  { path: 'auth/registro', component: RegistroComponent/*, canActivate: [iniciadoGuard]*/},
-      // Ruta para el componente de inicio de sesión
-  { path: 'auth/inicioSesion', component: InicioSesionComponent/*, canActivate: [iniciadoGuard]*/},
-
-
-  {
-    path: 'home',
-    component: HomeComponent,
+  { 
+    path: 'auth/inicioSesion', 
+    component: InicioSesionComponent,
   },
 
   {
     path: 'administracion',
-    component: AdministracionComponent, 
+    component: AdministracionComponent,
+    canActivate: [iniciadoGuard ,administradorGuard]
   },
 
   {
@@ -52,15 +42,20 @@ const routes: Routes = [
         path: 'crearUsuario',
         component: RegistroComponent,
       },
-    ]
+    ],
+    canActivate: [iniciadoGuard,administradorGuard]
   },
 
   {
     path: 'galeria',
-    component: GaleriaComponent, 
+    component: GaleriaComponent,
+    canActivate: [iniciadoGuard]
   },
 
-
+  {
+    path: '**',
+    component: Error404Component,
+  },
 ];
 
 @NgModule({

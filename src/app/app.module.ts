@@ -14,8 +14,6 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { InicioSesionComponent } from './auth/inicio-sesion/inicio-sesion.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HomeComponent } from './home/home.component';
-import { BienvenidaComponent } from './bienvenida/bienvenida.component';
 import { MenuNavigationComponent } from './menu-navigation/menu-navigation.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -26,18 +24,18 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AdministracionComponent } from './administracion/administracion.component';
 import { EditarUsuarioComponent } from './administracion/editar-usuario/editar-usuario.component';
 import { GaleriaComponent } from './galeria/galeria.component';
+import { Error404Component } from './error404/error404.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistroComponent,
     InicioSesionComponent,
-    HomeComponent,
-    BienvenidaComponent,
     MenuNavigationComponent,
     AdministracionComponent,
     EditarUsuarioComponent,
-    GaleriaComponent
+    GaleriaComponent,
+    Error404Component
     
   ],
   imports: [

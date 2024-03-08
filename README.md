@@ -7,7 +7,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 https://angularproyecto-eab9b.web.app/
 
 
-## Usuario administrador
+## Usuarios
 
-email: admi@admin.com
+ADMINISTRADOR
+email: admin@admin.com
+contraseña: 123456
+
+USUARIO:
+email: u@u.com
 contraseña: 123456

@@ -88,7 +88,6 @@ export class AutenticacionService {
       this.esAdministrador = this.rol === 'Administrador';
       return this.esAdministrador;
     });
-
     return false;
   }
 
