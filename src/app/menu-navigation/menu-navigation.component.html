@@ -10,7 +10,7 @@
       <a mat-list-item *ngIf="estaIniciado" (click)="cerrarSesion()">Cerrar Sesion</a>
 
       <a mat-list-item *ngIf="esAdmin && estaIniciado" href="/administracion">Administración</a>
-      <a mat-list-item *ngIf="estaIniciado" href="/galeria">Galería</a>
+      <a mat-list-item *ngIf="!esAdmin && estaIniciado"  href="/galeria">Galería</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
